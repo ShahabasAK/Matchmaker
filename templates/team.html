@@ -1,0 +1,92 @@
+{% include 'base.html'%}
+{% load static %}
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">Match-Maker</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="\index">Home</a></li>
+
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="\about">About</a></li>
+              <li><a href="#" class="active">Team</a></li>
+              
+            </ul>
+          </li>
+          <li><a href="\explore">Explore</a></li>
+          <li><a href="\request">Requests</a></li>
+          <li><a href="\mates">Accepted</a></li>
+          <li><a href="\profile">Profile</a></li>
+          <li><a href="\contact">Contact</a></li>
+          <li><a href="\logout">Logout</a></li>
+          <li><a href="\index" class="getstarted">Get Started</a></li>
+         
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Team</h2>
+          <ol>
+            <li><a href="\index">Home</a></li>
+            <li>Team</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team ">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src={% static '/img/team/team-1.jpg'%} class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Shahabas Ahammed AK/h4>
+                <span>Founder and head of Development.</span>
+                <p>Follow him on various platforms.</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href="https://www.instagram.com/shahabas_akes/?igshid=ZDdkNTZiNTM%3D"><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+  </main><!-- End #main -->
+
+  {% include 'footer.html'%}
+
+  
+</body>
+
+</html>

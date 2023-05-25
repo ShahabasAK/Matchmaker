@@ -1,0 +1,78 @@
+{% include 'base.html'%}
+<br><br><br><br><br><br><br><br>
+<style>
+  /* CSS styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  .profile {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .profile h1 {
+    margin-top: 0;
+  }
+  .profile p {
+    margin: 0;
+  }
+  .profile .bio {
+    flex: 1;
+  }
+  .request-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .request-button:hover {
+    background-color: darkred;
+  }
+</style>
+<body>
+  <div class="row">
+    {% for i in a %}
+    <div class="col">
+      <div class="container">
+        <div class="profile">
+          {% if i.photo %}
+          <img src="{{i.photo.url}}" alt="Profile Picture">
+          {% else %}
+          <img src="https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg" alt="Profile Picture">
+          {% endif %}
+          <div class="bio">
+            <p>Name:{{i.name}}</p>
+            <p>Bio:{{i.bio}}</p>
+            <p>DOB:{{i.dob}}</p>
+            <p>Gender:{{i.gender}}</p>
+            <p>Qualification:{{i.qualification}}</p>
+
+           <a href="/request/{{i.id}}/"> <button class="request-button" onclick="return confirm('Are you sure to Request ?')">Request</button></a>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% include 'footer.html'%}
+</body>
+
