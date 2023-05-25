@@ -140,68 +140,130 @@
           input[type="submit"]:hover {
             background-color: #3e8e41;
           }
+          .error {
+            color: red;
+            font-size: 12px;
+          }
+          .warning {
+            color: orange;
+            font-size: 12px;
+          }
         </style>
       </head>
       <body>
         <h1>Edit Profile</h1>
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
           {% csrf_token %}
-          
+      
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-          
+          <span id="email-error" class="error"></span>
+      
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <span id="password-error" class="error"></span>
 
-         
+        <label for="photo">Profile Photo</label>
+        <div class="file-upload">
+            <input type="file" id="photo" name="photo">
+            <button class="button">Choose File</button>
+        </div>
 
-          <label for="photo">Profile Photo</label>
-          <div class="file-upload">
-          <input type="file" id="photo" name="photo">
-          <button class="button">Choose File</button>
-          </div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your Name" required>
 
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" placeholder="Tell us about yourself"></textarea>
 
-          <label for="bio">Bio</label>
-          <textarea id="bio" name="bio" placeholder="Tell us about yourself"></textarea>
+        <label for="dob">DOB</label>
+        <input type="date" id="dob" name="dob" placeholder="Enter your Date of Birth" required>
+        <span id="dob-error" class="error"></span>
 
-          <label for="dob">DOB</label>
-          <input type="date" id="dob" name="date" placeholder="Enter your Date of Birth" required>
-
-          <label for="category">Gender</label>
-          <select class="form-control" name="gender"  placeholder="select your gender" required>
+        <label for="category">Gender</label>
+        <select class="form-control" name="gender" placeholder="select your gender" required>
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="O">Other</option>
-          </select>       
+        </select>
 
-          <label for="qualification">Qualifications</label>
-          <select class="form-control" name="qualification"  placeholder="select your highest qualification" required>
+        <label for="qualification">Qualifications</label>
+        <select class="form-control" name="qualification" placeholder="select your highest qualification" required>
             <option value="sslc">SSLC</option>
             <option value="ug">UG</option>
             <option value="pg">PG</option>
-          </select>  
-          
+        </select>
 
-          <label for="number">Number</label>
-          <input type="number" id="number" name="number" placeholder="Enter your whatsapp number" required maxlength="10">
+        <label for="number">Number</label>
+        <input type="text" id="number" name="number" placeholder="Enter your whatsapp number" required maxlength="10">
+        <span id="number-error" class="error"></span>
+        <br>
+        <br>
+    <input type="submit" value="Save">
+  </form>
+  {% include 'footer.html' %}
 
-         
-          </div>
-          <br>
-          <input type="submit" value="Save">
-        </form>
-      </body>
-      </html>
-  
+  <script>
+    function validateForm() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const number = document.getElementById("number").value;
+      const dob = document.getElementById("dob").value;
 
-    
+      // Email validation
+      if (!validateEmail(email)) {
+        document.getElementById("email-error").textContent = "Please enter a valid email address.";
+        return false;
+      } else {
+        document.getElementById("email-error").textContent = "";
+      }
 
-      {% include 'footer.html'%}
+      // Password validation
+      if (!validatePassword(password)) {
+        document.getElementById("password-error").textContent = "Password must be at least 8 characters long.";
+        return false;
+      } else {
+        document.getElementById("password-error").textContent = "";
+      }
 
-  
+      // dob validation
+      if (!validateDOB(dob)) {
+        document.getElementById("dob-error").textContent = "Please enter a valid date of birth.";
+        return false;
+      } else {
+        document.getElementById("dob-error").textContent = "";
+      }
+
+
+      // Phone number validation
+      if (!validateNumber(number)) {
+        document.getElementById("number-error").textContent = "Please enter a valid numeric phone number.";
+        return false;
+      } else {
+        document.getElementById("number-error").textContent = "";
+      }
+
+      return true; // Form is valid, can be submitted
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validatePassword(password) {
+      return password.length >= 8;
+    }
+
+    function validateNumber(number) {
+      return /^\d+$/.test(number);
+    }
+
+    function validateDOB(dob) {
+      // DOB validation
+      const selectedDate = new Date(dob);
+      return !isNaN(selectedDate.getTime());
+    }
+
+
+
+  </script>
 </body>
-
-</html>
