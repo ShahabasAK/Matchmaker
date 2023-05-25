@@ -165,9 +165,10 @@
 
         <label for="photo">Profile Photo</label>
         <div class="file-upload">
-            <input type="file" id="photo" name="photo">
-            <button class="button">Choose File</button>
+          <input type="file" id="photo" name="photo" onchange="displayFileName()">
+          <button class="button">Choose File</button>
         </div>
+        <span id="file-name"></span>
 
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Enter your Name" required>
@@ -203,8 +204,14 @@
   {% include 'footer.html' %}
 
   <script>
+    function displayFileName() {
+    const fileInput = document.getElementById('photo');
+    const fileName = fileInput.files[0].name;
+    const fileNameElement = document.getElementById('file-name');
+    fileNameElement.textContent = 'Selected file: ' + fileName;
+  }
     function validateForm() {
-      const email = document.getElementById("email").value;
+      const email = document.getElementById("email").value;   
       const password = document.getElementById("password").value;
       const number = document.getElementById("number").value;
       const dob = document.getElementById("dob").value;
