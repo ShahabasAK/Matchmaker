@@ -1,2 +1,14 @@
 # Matchmaker
-a Django mini project.
+A django mini project.
+
+ADMIN USERNAME: admin
+PASSWORD : 123
+
+(Used "JAZZMIN")
+
+some user details for login:
+email:  bilal@gmail.com     
+password: 123
+
+email:  noble@gmail.com
+password: 123
