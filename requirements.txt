@@ -52,3 +52,8 @@ wcwidth==0.2.6
 
 INSTALL ALL THESE PACKAGES:
 pip install -r requirements.txt
+
+Then make migrations and migrate it:
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
